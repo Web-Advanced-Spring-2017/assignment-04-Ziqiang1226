@@ -1,4 +1,4 @@
-//index
+
 var text="Explore Your Digital Identity and Physical Self";
 var delay=20;
 var currentChar=1;
@@ -39,27 +39,15 @@ function startTyping(textParam, delayParam, destinationParam)
 
 
 
-
-
-
-// FACEBOOK 
-//initialize and setup facebook js sdk
-
-//change Line 55 and 76
-
 window.fbAsyncInit = function() {
     FB.init({
-      appId      : '372355619822069', //***WRITE APPID
+      appId      : '372355619822069',
       xfbml      : true,
       version    : 'v2.8',
       status     : true,
       cookie     : true,
     });
 
-    // FB.Event.subscribe('auth.login', function(){
-    //     window.location= "explore.html";
-    // });
-    // var login = false;
 
 
     FB.getLoginStatus(function(response) {
@@ -110,7 +98,6 @@ $('#test').click(function(){
 
 });
 
-// login with facebook with extra permissions
 function login() {
     FB.login(function(response) {
         if (response.status === 'connected') {
@@ -137,7 +124,6 @@ $('#test2').click(function(){
         FB.getLoginStatus(function(response){
             if (response && response.status ==='connected'){
                 FB.logout(function (response) {
-                //Do what ever you want here when logged out like reloading the page
                 document.location.href="index.html";
                 });
             }
@@ -148,87 +134,39 @@ $('#test2').click(function(){
 
 function fbLogout() {
     console.log("sign out");
-    //Do what ever you want here when logged out like reloading the page
-    // document.location.reload("index.html");
+
     document.location.href = "index.html";
     FB.logout(function (response) {
         console.log("sign out");
-        //Do what ever you want here when logged out like reloading the page
         window.location.reload("index.html");
     });
 }
 
 
-// function getInfo() {
-//     FB.api('/me', 'GET', {fields: 'name,id, picture.width(150).height(150)'}, function(response) {
-//         document.getElementById('name').innerHTML = response.name;
-//         document.getElementById('proPic').innerHTML = "<img src='" + response.picture.data.url + "'>";
-
-//         if ( response.name.contains == 'Remembering' ){
-//             document.getElementById('memorialized_status').innerHTML = "This person is memorialized."
-//         } else {
-//             document.getElementById('memorialized_status').innerHTML = "This person is alive."
-//         }
-
-//     });
-// }
-
-// function getLocation(){
-//     FB.api(
-//       'WRITEYOURAPPIDHERE?fields=location',//***WRITE APPID
-//       function(response) {
-//           // Insert your code here
-//           console.log(response.location);
-//       }
-//     );
-// }
-
-
-// function getBirthday(){
-//     FB.api('/me', 'GET', {fields: 'updated_time'},
-//         function (response) {
-//           console.log(response.updated_time);
-//           //2016-04-14T04:14:15+0000
-//         }
-        
-//     );
-// }
-// function getBirthday(){
-//     FB.api('/me', 'GET', {fields: 'verified'},
-//         function (response) {
-//           console.log(response.verified);
-//           //true (bool)
-//         }
-        
-//     );
-//}
-
-/////////////////////////MODAL///////////////////////////////
 var modalButton = document.getElementById('signin');
 if (modalButton!=null) {
     modalButton.addEventListener('click',openModal,false);
 
-    //OPEN MODAL BOX FUNCTION
+
     function openModal () {
         transparentLayer.style.display = 'block';
         modalBox.style.display= 'block';
     }
 
-    //EXIT MODAL BOX FUNCTION
     function exitModal () {
         transparentLayer.style.display = 'none';
         modalBox.style.display = 'none';
     }
     transparentLayer.addEventListener('click',exitModal,false);
 
-    //EXIT BY esc
+ 
     window.onkeydown = function(e){
         if (e.keyCode == 27){
             exitModal();
         }
     };
 
-    //EXIT BY pressing X
+
     var exitButton = document.getElementById('exitModal');
     exitButton.addEventListener('click',exitModal,false);
 }
